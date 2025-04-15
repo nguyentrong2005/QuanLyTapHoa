@@ -197,6 +197,12 @@ namespace QLTH_BTNhom
             LockTxtBox(true);
             btnLuu.Enabled = false;
             btnThem.Enabled = true;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)

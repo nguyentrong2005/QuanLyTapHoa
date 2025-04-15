@@ -281,6 +281,12 @@ namespace QLTH_BTNhom
             btnLuu.Enabled = false;
             btnThem.Enabled = true;
             btnTimKiem.Enabled = true;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
