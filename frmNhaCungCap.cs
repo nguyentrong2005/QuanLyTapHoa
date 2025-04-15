@@ -15,10 +15,18 @@ namespace QLTH_BTNhom
     {
         private DatabaseHelper db = new DatabaseHelper();
         private string actionState = "";
+        private bool isAdmin;
 
-        public frmNhaCungCap()
+        public frmNhaCungCap(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void frmNhaCungCap_Load(object sender, EventArgs e)
@@ -241,6 +249,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(false);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -257,6 +271,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void dgvNhaCungCap_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -266,6 +286,12 @@ namespace QLTH_BTNhom
             btnThem.Enabled = false;
             btnTimKiem.Enabled = false;
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
 
 
             if (e.RowIndex >= 0) // Đảm bảo không click vào tiêu đề cột

@@ -13,9 +13,11 @@ namespace QLTH_BTNhom
 {
     public partial class frmThongKeDoanhThu : Form
     {
-        public frmThongKeDoanhThu()
+        private bool isAdmin;
+        public frmThongKeDoanhThu(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
         }
 
         private void frmThongKeDoanhThu_Load(object sender, EventArgs e)

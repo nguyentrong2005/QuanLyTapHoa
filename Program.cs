@@ -23,7 +23,7 @@ namespace QLTH_BTNhom
             if (isConnected)
             {
                 MessageBox.Show(" Kết nối thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Run(new frmMain());
+                Application.Run(new frmDangNhap());
             }
             else
             {

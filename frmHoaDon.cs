@@ -15,9 +15,17 @@ namespace QLTH_BTNhom
     {
         private DatabaseHelper db = new DatabaseHelper();
         private string actionState = "";
-        public frmHoaDon()
+        private bool isAdmin;
+        public frmHoaDon(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void frmHoaDon_Load(object sender, EventArgs e)
         {
@@ -272,6 +280,12 @@ namespace QLTH_BTNhom
             //
             LockTxtBox(false);
             dtpNgayLap.Enabled = true;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
@@ -283,6 +297,12 @@ namespace QLTH_BTNhom
             btnXoa.Enabled = false;
             btnChiTiet.Enabled = false;
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -292,6 +312,12 @@ namespace QLTH_BTNhom
             btnThem.Enabled = false;
             btnChiTiet.Enabled = true;
             btnTimKiem.Enabled = false;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
 
 
             if (e.RowIndex >= 0)
@@ -338,18 +364,18 @@ namespace QLTH_BTNhom
         }
         private void btnCongNhanVien_Click(object sender, EventArgs e)
         {
-            frmNhanVien frm = new frmNhanVien();
+            frmNhanVien frm = new frmNhanVien(isAdmin);
             frm.Show();
         }
         private void btnChiTiet_Click(object sender, EventArgs e)
         {
             string maHD = dgvHoaDon.SelectedRows[0].Cells["MaHD"].Value.ToString();
-            frmChiTietHoaDon frm = new frmChiTietHoaDon(maHD);
+            frmChiTietHoaDon frm = new frmChiTietHoaDon(maHD, isAdmin);
             frm.ShowDialog();
         }
         private void btnCongKH_Click(object sender, EventArgs e)
         {
-            frmKhachHang frm = new frmKhachHang();
+            frmKhachHang frm = new frmKhachHang(isAdmin);
             frm.Show();
         }
     }

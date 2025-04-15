@@ -15,10 +15,18 @@ namespace QLTH_BTNhom
     {
         private DatabaseHelper db = new DatabaseHelper();
         private string actionState = "";
+        private bool isAdmin;
 
-        public frmSanPham()
+        public frmSanPham(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void frmSanPham_Load(object sender, EventArgs e)
@@ -325,6 +333,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(false);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -341,6 +355,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -350,6 +370,12 @@ namespace QLTH_BTNhom
             btnThem.Enabled = false;
             btnTimKiem.Enabled = false;
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
 
 
             if (e.RowIndex >= 0) // Đảm bảo không click vào tiêu đề cột
@@ -369,13 +395,13 @@ namespace QLTH_BTNhom
 
         private void btnCongLoaiSP_Click(object sender, EventArgs e)
         {
-            frmLoaiSanPham frm = new frmLoaiSanPham();
+            frmLoaiSanPham frm = new frmLoaiSanPham(isAdmin);
             frm.Show();
         }
 
         private void btnCongNCC_Click(object sender, EventArgs e)
         {
-            frmNhaCungCap frm = new frmNhaCungCap();
+            frmNhaCungCap frm = new frmNhaCungCap(isAdmin);
             frm.Show();
         }
     }

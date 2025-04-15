@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.labTitle = new System.Windows.Forms.Label();
             this.panTitle = new System.Windows.Forms.Panel();
             this.msMenu = new System.Windows.Forms.MenuStrip();
@@ -46,11 +46,12 @@
             this.báoCáoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêTồnKhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panMenu = new System.Windows.Forms.Panel();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labDoanhThu = new System.Windows.Forms.Label();
             this.cbxDoanhThu = new System.Windows.Forms.ComboBox();
-            this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labXinChao = new System.Windows.Forms.Label();
             this.panTitle.SuspendLayout();
             this.msMenu.SuspendLayout();
             this.panMenu.SuspendLayout();
@@ -91,7 +92,7 @@
             this.nhânViênToolStripMenuItem});
             this.msMenu.Location = new System.Drawing.Point(9, 22);
             this.msMenu.Name = "msMenu";
-            this.msMenu.Size = new System.Drawing.Size(980, 53);
+            this.msMenu.Size = new System.Drawing.Size(830, 53);
             this.msMenu.TabIndex = 2;
             this.msMenu.Text = "menuStrip1";
             // 
@@ -195,8 +196,16 @@
             this.thốngKêTồnKhoToolStripMenuItem.Text = "Thống kê tồn kho";
             this.thốngKêTồnKhoToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTồnKhoToolStripMenuItem_Click);
             // 
+            // nhânViênToolStripMenuItem
+            // 
+            this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
+            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(183, 49);
+            this.nhânViênToolStripMenuItem.Text = "Nhân viên";
+            this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
+            // 
             // panMenu
             // 
+            this.panMenu.Controls.Add(this.labXinChao);
             this.panMenu.Controls.Add(this.msMenu);
             this.panMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panMenu.Location = new System.Drawing.Point(0, 138);
@@ -206,10 +215,10 @@
             // 
             // chartDoanhThu
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend2);
             this.chartDoanhThu.Location = new System.Drawing.Point(19, 347);
             this.chartDoanhThu.Name = "chartDoanhThu";
             this.chartDoanhThu.Size = new System.Drawing.Size(1893, 805);
@@ -235,12 +244,14 @@
             this.cbxDoanhThu.Size = new System.Drawing.Size(250, 46);
             this.cbxDoanhThu.TabIndex = 6;
             // 
-            // nhânViênToolStripMenuItem
+            // labXinChao
             // 
-            this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
-            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(183, 49);
-            this.nhânViênToolStripMenuItem.Text = "Nhân viên";
-            this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
+            this.labXinChao.AutoSize = true;
+            this.labXinChao.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labXinChao.Location = new System.Drawing.Point(1504, 36);
+            this.labXinChao.Name = "labXinChao";
+            this.labXinChao.Size = new System.Drawing.Size(0, 39);
+            this.labXinChao.TabIndex = 3;
             // 
             // frmMain
             // 
@@ -292,5 +303,6 @@
         private System.Windows.Forms.ComboBox cbxDoanhThu;
         private System.Windows.Forms.ToolStripMenuItem khoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nhânViênToolStripMenuItem;
+        private System.Windows.Forms.Label labXinChao;
     }
 }

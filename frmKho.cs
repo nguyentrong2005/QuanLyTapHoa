@@ -15,10 +15,18 @@ namespace QLTH_BTNhom
     {
         private DatabaseHelper db = new DatabaseHelper();
         private string actionState = "";
+        private bool isAdmin;
 
-        public frmKho()
+        public frmKho(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void frmKho_Load(object sender, EventArgs e)
@@ -202,6 +210,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(false);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -211,6 +225,12 @@ namespace QLTH_BTNhom
             btnThem.Enabled = true;
             btnTimKiem.Enabled = true;
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void dgvKho_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -220,6 +240,12 @@ namespace QLTH_BTNhom
             btnLuu.Enabled = false;
             btnThem.Enabled = false;
             btnTimKiem.Enabled = false;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
 
             if (e.RowIndex >= 0)
             {
@@ -240,7 +266,7 @@ namespace QLTH_BTNhom
         }
         private void btnCongNhanVien_Click(object sender, EventArgs e)
         {
-            frmNhanVien frm = new frmNhanVien();
+            frmNhanVien frm = new frmNhanVien(isAdmin);
             frm.Show();
         }
 

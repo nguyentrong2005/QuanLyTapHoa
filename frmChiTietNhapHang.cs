@@ -17,10 +17,19 @@ namespace QLTH_BTNhom
         private DatabaseHelper db = new DatabaseHelper();
         private string actionState = "";
         private string oldMaSP;
-        public frmChiTietNhapHang(string maNhap)
+        private bool isAdmin;
+        public frmChiTietNhapHang(string maNhap, bool isAdmin)
         {
             InitializeComponent();
             this.maNhap = maNhap;
+            this.isAdmin = isAdmin;
+
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void frmChiTietNhapHang_Load(object sender, EventArgs e)
         {
@@ -279,6 +288,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(false);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
@@ -294,6 +309,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
         private void dgvChiTietNhapHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -303,6 +324,12 @@ namespace QLTH_BTNhom
             btnThem.Enabled = false;
             btnTimKiem.Enabled = false;
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
 
 
             if (e.RowIndex >= 0) // Đảm bảo không click vào tiêu đề cột
@@ -320,7 +347,7 @@ namespace QLTH_BTNhom
         }
         private void btnCongSP_Click(object sender, EventArgs e)
         {
-            frmSanPham frm = new frmSanPham();
+            frmSanPham frm = new frmSanPham(isAdmin);
             frm.Show();
         }
     }

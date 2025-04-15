@@ -15,10 +15,18 @@ namespace QLTH_BTNhom
     {
         private DatabaseHelper db = new DatabaseHelper();
         private string actionState = "";
+        private bool isAdmin;
 
-        public frmNhapHang()
+        public frmNhapHang(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void frmNhapHang_Load(object sender, EventArgs e)
@@ -286,6 +294,12 @@ namespace QLTH_BTNhom
 
             //
             LockTxtBox(false);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -298,6 +312,12 @@ namespace QLTH_BTNhom
             btnXoa.Enabled = false;
             btnChiTiet.Enabled = false;
             LockTxtBox(true);
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void dgvNhapHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -308,7 +328,12 @@ namespace QLTH_BTNhom
             btnThem.Enabled = false;
             btnChiTiet.Enabled = true;
             btnTimKiem.Enabled = false;
-
+            if (!isAdmin)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
 
             if (e.RowIndex >= 0)
             {
@@ -354,26 +379,26 @@ namespace QLTH_BTNhom
         }
         private void btnCongNhanVien_Click(object sender, EventArgs e)
         {
-            frmNhanVien frm = new frmNhanVien();
+            frmNhanVien frm = new frmNhanVien(isAdmin);
             frm.Show();
         }
 
         private void btnChiTiet_Click(object sender, EventArgs e)
         {
             string maNhap = dgvNhapHang.SelectedRows[0].Cells["MaNhap"].Value.ToString();
-            frmChiTietNhapHang frm = new frmChiTietNhapHang(maNhap);
+            frmChiTietNhapHang frm = new frmChiTietNhapHang(maNhap, isAdmin);
             frm.ShowDialog();
         }
 
         private void btnCongNCC_Click(object sender, EventArgs e)
         {
-            frmNhaCungCap frm = new frmNhaCungCap();
+            frmNhaCungCap frm = new frmNhaCungCap(isAdmin);
             frm.Show();
         }
 
         private void btnCongKho_Click(object sender, EventArgs e)
         {
-            frmKho frm = new frmKho();
+            frmKho frm = new frmKho(isAdmin);
             frm.Show();
         }
     }

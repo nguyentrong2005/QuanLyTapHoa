@@ -14,9 +14,11 @@ namespace QLTH_BTNhom
     public partial class frmThongKeTonKho : Form
     {
         private DatabaseHelper db = new DatabaseHelper();
-        public frmThongKeTonKho()
+        private bool isAdmin;
+        public frmThongKeTonKho(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
         }
         private void frmThongKeTonKho_Load(object sender, EventArgs e)
         {
@@ -295,22 +297,22 @@ namespace QLTH_BTNhom
         }
         private void btnCongLoaiSP_Click(object sender, EventArgs e)
         {
-            frmLoaiSanPham frm = new frmLoaiSanPham();
+            frmLoaiSanPham frm = new frmLoaiSanPham(isAdmin);
             frm.Show();
         }
         private void btnCongNCC_Click(object sender, EventArgs e)
         {
-            frmNhaCungCap frm = new frmNhaCungCap();
+            frmNhaCungCap frm = new frmNhaCungCap(isAdmin);
             frm.Show();
         }
         private void btnCongSP_Click(object sender, EventArgs e)
         {
-            frmSanPham frm = new frmSanPham();
+            frmSanPham frm = new frmSanPham(isAdmin);
             frm.Show();
         }
         private void btnCongKho_Click(object sender, EventArgs e)
         {
-            frmKho frm = new frmKho();
+            frmKho frm = new frmKho(isAdmin);
             frm.Show();
         }
     }

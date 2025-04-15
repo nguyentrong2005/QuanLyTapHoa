@@ -14,9 +14,13 @@ namespace QLTH_BTNhom
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private string currentUsername;
+        private bool isAdmin;
+        public frmMain(string username, bool laQuanTriVien)
         {
             InitializeComponent();
+            currentUsername = username;
+            isAdmin = laQuanTriVien;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -24,6 +28,8 @@ namespace QLTH_BTNhom
             frmHelper.FullScreenForm(this);
             InitComboBoxDoanhThu();
             ConfigureColors();
+
+            labXinChao.Text = "Xin chào, " + currentUsername;
         }
 
         private void ConfigureColors()
@@ -70,48 +76,48 @@ namespace QLTH_BTNhom
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSanPham frm = new frmSanPham();
+            frmSanPham frm = new frmSanPham(isAdmin);
             frm.Show();
         }
 
         private void loạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLoaiSanPham frm = new frmLoaiSanPham();
+            frmLoaiSanPham frm = new frmLoaiSanPham(isAdmin);
             frm.Show();
         }
 
         private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNhapHang frm = new frmNhapHang();
+            frmNhapHang frm = new frmNhapHang(isAdmin);
             frm.Show();
         }
 
         private void hóaĐơnBánToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmHoaDon frm = new frmHoaDon();
+            frmHoaDon frm = new frmHoaDon(isAdmin);
             frm.Show();
         }
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKhachHang frm = new frmKhachHang();
+            frmKhachHang frm = new frmKhachHang(isAdmin);
             frm.Show();
         }
 
         private void nhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNhaCungCap frm = new frmNhaCungCap();
+            frmNhaCungCap frm = new frmNhaCungCap(isAdmin);
             frm.Show();
         }
 
         private void thốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmThongKeDoanhThu frm = new frmThongKeDoanhThu();
+            frmThongKeDoanhThu frm = new frmThongKeDoanhThu(isAdmin);
             frm.Show();
         }
         private void thốngKêTồnKhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmThongKeTonKho frm = new frmThongKeTonKho();
+            frmThongKeTonKho frm = new frmThongKeTonKho(isAdmin);
             frm.Show();
         }
 
@@ -122,13 +128,13 @@ namespace QLTH_BTNhom
 
         private void khoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKho frm = new frmKho();
+            frmKho frm = new frmKho(isAdmin);
             frm.Show();
         }
 
         private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNhanVien frm = new frmNhanVien();
+            frmNhanVien frm = new frmNhanVien(isAdmin);
             frm.Show();
         }
     }
